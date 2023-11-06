@@ -31,10 +31,10 @@ int findDuplicate(vector<int> &arr)
 
     for (int i = 0; i < n; i++)
     {
-        int elm = abs(arr[i]);
-        if (arr[elm - 1] < 0)
+        int elem = abs(arr[i]);
+        if (arr[elem - 1] < 0)
             return abs(arr[i]);
-        arr[elm - 1] *= -1;
+        arr[elem - 1] *= -1;
     }
 
     return ans;
