@@ -80,7 +80,45 @@ int lengthOfLIS(vector<int> &nums)
     }
 
     return prevArr[0];
-} 
+}
+
+// Binary Search Approach.
+int uppperBound(vector<int> &arr, int &key)
+{
+    int s = 0, e = arr.size() - 1;
+    int ans = -1;
+
+    while (s <= e)
+    {
+        int mid = s + (e - s) / 2;
+        if (arr[mid] >= key)
+        {
+            ans = mid;
+            e = mid - 1;
+        }
+        else
+        {
+            s = mid + 1;
+        }
+    }
+
+    return ans;
+}
+int lengthOfLIS(vector<int> &nums)
+{
+    vector<int> temp;
+
+    for (int i = 0; i < nums.size(); i++)
+    {
+        int index = uppperBound(temp, nums[i]);
+        if (index == -1)
+            temp.push_back(nums[i]);
+        else
+            temp[index] = nums[i];
+    }
+
+    return temp.size();
+}
 
 int main()
 {
