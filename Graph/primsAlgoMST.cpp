@@ -3,6 +3,7 @@
 using namespace std;
 
 // Minimum spanning tree using prims algorithm.
+
 int spanningTree(int V, vector<vector<int>> adj[])
 {
     priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
